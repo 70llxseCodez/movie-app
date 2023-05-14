@@ -9,28 +9,31 @@ export default class App extends React.Component {
 
   state = {
     data: [],
+    error: false,
   };
 
+  gottenError() {
+    this.setState({
+      error: true,
+      data: [],
+    });
+  }
+
   componentDidMount() {
-    this.movieDatas.getAllMovies().then(
-      (res) => {
+    this.movieDatas
+      .getAllMovies()
+      .then((res) => {
         this.setState({
-          data: res.slice(0, 10),
+          data: res,
         });
-      },
-      (err) => {
-        console.log(err, 'from getting Data');
-        this.setState({
-          data: [],
-        });
-      }
-    );
+      })
+      .catch(this.gottenError.bind(this));
   }
 
   render() {
     return (
       <div className="App">
-        <Movies data={this.state.data} />
+        <Movies error={this.state.error} data={this.state.data} />
       </div>
     );
   }
