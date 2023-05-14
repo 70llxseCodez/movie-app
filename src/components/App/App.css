@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #E5E5E5;
+}
+
+.container {
+    width: 1010px;
+    margin: 0 auto;
+    padding: 32px;
+    background: #FFFFFF;
+}
+
+@media screen and (width <=1010px) {
+    .container {
+        width: 100%;
+    }
+}
