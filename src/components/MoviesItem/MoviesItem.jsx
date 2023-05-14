@@ -3,7 +3,6 @@ import "./MoviesItem.css";
 
 export default class MoviesItem extends Component {
   render() {
-    const branch = 10;
     const {
       original_title: title,
       overview: description,

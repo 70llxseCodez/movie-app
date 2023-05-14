@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import MoviesItem from "../MoviesItem";
-import "./Movies.css";
+import MoviesItem from '../MoviesItem';
+import './Movies.css';
 
 export default class Movies extends Component {
   render() {
