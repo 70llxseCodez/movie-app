@@ -1,31 +1,18 @@
+import { Rate } from 'antd';
 import React, { Component } from 'react';
 import { format } from 'date-fns';
-import { Rate } from 'antd';
 
-import './MoviesItem.css';
 import CyrcleRate from '../CyrcleRate/CyrcleRate';
 import Genre from '../GeneratorsGenre/Genre';
-import { SwapiService } from '../../services/SwapiService';
 
-export default class MoviesItem extends Component {
-  movieDatas = new SwapiService();
-
+export default class RateItem extends Component {
   _apiImage = 'https://image.tmdb.org/t/p//w300';
-  toSortDesc = () => {
-    const toArr = this.props.overview.substr(0, 110);
-    return toArr;
-  };
-
-  setStar = (rate) => {
-    const { id, guestId, postRate } = this.props;
-    postRate(id, rate, guestId);
-  };
   render() {
     const {
-      original_title: title,
-      popularity,
-      release_date: date,
       backdrop_path: backdrop,
+      rating,
+      release_date: date,
+      original_title: title,
       vote_average: vote,
       genre_ids: genres,
     } = this.props;
@@ -43,9 +30,7 @@ export default class MoviesItem extends Component {
             <Genre genresId={genres} />
           </div>
           <CyrcleRate vote={vote} />
-          <p>{popularity}</p>
-          <p className="movies__descrition">{this.toSortDesc()}...</p>
-          <Rate allowHalf defaultValue={0} count={7} onChange={this.setStar} />
+          <Rate allowHalf defaultValue={rating} count={7} disabled />
         </section>
       </div>
     );
